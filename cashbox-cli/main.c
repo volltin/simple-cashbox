@@ -8,20 +8,24 @@
 
 extern cb_db_dataset Dat;
 
-void print_db()
+void print_db(int k)
 {
 	char time_str[MAX_TEXT_LEN];
 	int i = 0;
 	int total = 0;
-	
+	if (k == 0) k = Dat.n;
+
 	puts("******************************");
 
 	printf("* [id]        [time]        [money]   [text]\n");
 	for (node* p = Dat.head; p ; p = p -> next)
 	{
-		time_to_str(p->v->time, time_str);
-		printf("* [%2d] %s %d %s\n", i++, time_str, p->v->money, p->v->text);
-
+		if (i >= Dat.n - k)
+		{
+			time_to_str(p->v->time, time_str);
+			printf("* [%2d] %s %d %s\n", i, time_str, p->v->money, p->v->text);
+		}
+		i++;
 		total += p->v->money;
 	}
 
@@ -33,7 +37,8 @@ void print_db()
 void print_long_tips()
 {
 	puts("[cashbox]Welcome!");
-	puts("[cashbox]Enter `p` to show the cashbox;");
+	puts("[cashbox]Enter `p` to show the cashbox(latest 5 items);");
+	puts("[cashbox]Enter `l` to show the cashbox(all items);");
 	puts("[cashbox]Enter `a` to add an item (with current time);");
 	puts("[cashbox]Enter `t` to add an item (with custom time);");
 	puts("[cashbox]Enter `d` to delete an item;");
@@ -43,7 +48,7 @@ void print_long_tips()
 
 void print_tips()
 {
-	puts("[cashbox]Enter command [p|a|t|d|h|q]:");
+	puts("[cashbox]Enter command [p|l|a|t|d|h|q]:");
 }
 
 int main()
@@ -59,7 +64,11 @@ int main()
 		switch(c)
 		{
 			case 'p':
-				print_db();
+				print_db(5);
+				print_tips();
+				break;
+			case 'l':
+				print_db(0);
 				print_tips();
 				break;
 			case 'a':
@@ -69,7 +78,7 @@ int main()
 				scanf("%s", text);
 				
 				add_item(get_cur_time(), money, text);
-				print_db();
+				print_db(5);
 				print_tips();
 				break;
 			case 't':
@@ -83,7 +92,7 @@ int main()
 				scanf("%s", text);
 
 				add_item(t, money, text);
-				print_db();
+				print_db(5);
 				print_tips();
 				break;
 			case 'd':
@@ -91,7 +100,7 @@ int main()
 				scanf("%d", &id);
 				
 				del_item(id);
-				print_db();
+				print_db(5);
 				print_tips();
 				break;
 			case 'h':
