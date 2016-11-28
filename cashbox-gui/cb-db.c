@@ -82,6 +82,7 @@ void cb_db_save_db()
 	{
 		_cb_db_save_items(p->v, 1, fl);
 	}
+	fclose(fl);
 }
 
 /* save Dat into data file */
@@ -100,6 +101,7 @@ void cb_db_read_db()
 		_cb_db_read_items(t, 1, fl);
 		cb_db_add_item(t);
 	}
+	fclose(fl);
 }
 
 /* add item at the tail of the linklist
@@ -163,7 +165,7 @@ void cb_db_del_item(const int k)
 		cur = cur->next;
 	}
 	if (NULL == cur) return;
-	if (cur == Dat.head) Dat.head = NULL;
+	if (cur == Dat.head) Dat.head = cur->next;
 	pre->next = cur->next;
 	free(cur->v);
 	free(cur);
