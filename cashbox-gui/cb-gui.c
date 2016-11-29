@@ -170,7 +170,7 @@ void cb_gui_init(int argc, char *argv[])
     char time_str[MAX_TEXT_LEN];
     time_to_str(get_cur_time(), time_str);
     gtk_entry_set_text (GTK_ENTRY(g_txt_start_time), "2016/01/01-00:00:00");
-    gtk_entry_set_text (GTK_ENTRY(g_txt_end_time), time_str);
+    gtk_entry_set_text (GTK_ENTRY(g_txt_end_time), "0");
     gtk_entry_set_text (GTK_ENTRY(g_txt_time), "0");
     gtk_entry_set_text (GTK_ENTRY(g_txt_money), "100");
     gtk_entry_set_text (GTK_ENTRY(g_txt_text), "some reason");
