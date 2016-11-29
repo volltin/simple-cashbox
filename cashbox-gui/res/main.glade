@@ -3,6 +3,8 @@
 <interface>
   <requires lib="gtk+" version="3.12"/>
   <object class="GtkWindow" id="window_main">
+    <property name="width_request">-1</property>
+    <property name="height_request">-1</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Hello World</property>
     <property name="resizable">False</property>
@@ -11,6 +13,7 @@
     <signal name="destroy" handler="on_window_main_destroy" swapped="no"/>
     <child>
       <object class="GtkFixed" id="fixed1">
+        <property name="height_request">500</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
@@ -220,10 +223,11 @@
         <child>
           <object class="GtkTextView" id="text_display">
             <property name="width_request">809</property>
-            <property name="height_request">229</property>
+            <property name="height_request">259</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="editable">False</property>
+            <property name="monospace">True</property>
           </object>
           <packing>
             <property name="x">15</property>

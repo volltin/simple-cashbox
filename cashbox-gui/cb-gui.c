@@ -61,7 +61,7 @@ void display_db(time_t start_time, time_t end_time)
 	int i = 0;
 	int total = 0;
 
-	sprintf(buff, "* [id]        [time]        [money]   [text]\n");
+	sprintf(buff, "* [id]                [time]                      [money]     [text]\n");
 	insert_text(buff, g_text_display);
 
 	for (node* p = Dat.head; p ; p = p -> next)
@@ -70,7 +70,7 @@ void display_db(time_t start_time, time_t end_time)
 		if (start_time <= pt && pt <= end_time)
 		{
 			time_to_str(p->v->time, time_str);
-			sprintf(buff, "* [%2d] %s %10d %20s\n", i, time_str, p->v->money, p->v->text);
+			sprintf(buff, "* [%3d] | %s | %15d | %20s\n", i, time_str, p->v->money, p->v->text);
 			insert_text(buff, g_text_display);
 		}
 		i++;

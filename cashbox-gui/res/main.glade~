@@ -3,6 +3,8 @@
 <interface>
   <requires lib="gtk+" version="3.12"/>
   <object class="GtkWindow" id="window_main">
+    <property name="width_request">-1</property>
+    <property name="height_request">-1</property>
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Hello World</property>
     <property name="resizable">False</property>
@@ -11,6 +13,7 @@
     <signal name="destroy" handler="on_window_main_destroy" swapped="no"/>
     <child>
       <object class="GtkFixed" id="fixed1">
+        <property name="height_request">500</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
@@ -45,8 +48,8 @@
             <property name="can_focus">True</property>
           </object>
           <packing>
-            <property name="x">96</property>
-            <property name="y">21</property>
+            <property name="x">111</property>
+            <property name="y">20</property>
           </packing>
         </child>
         <child>
@@ -57,8 +60,8 @@
             <property name="can_focus">True</property>
           </object>
           <packing>
-            <property name="x">95</property>
-            <property name="y">67</property>
+            <property name="x">110</property>
+            <property name="y">68</property>
           </packing>
         </child>
         <child>
@@ -67,7 +70,8 @@
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">开始时间</property>
+            <property name="label" translatable="yes">        开始时间
+（0代表无穷小）</property>
           </object>
           <packing>
             <property name="y">21</property>
@@ -79,7 +83,8 @@
             <property name="height_request">80</property>
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">结束时间</property>
+            <property name="label" translatable="yes">       结束时间
+（0代表无穷大）</property>
           </object>
           <packing>
             <property name="y">65</property>
@@ -105,8 +110,8 @@
             <property name="can_focus">True</property>
           </object>
           <packing>
-            <property name="x">94</property>
-            <property name="y">130</property>
+            <property name="x">109</property>
+            <property name="y">128</property>
           </packing>
         </child>
         <child>
@@ -218,10 +223,11 @@
         <child>
           <object class="GtkTextView" id="text_display">
             <property name="width_request">809</property>
-            <property name="height_request">229</property>
+            <property name="height_request">259</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="editable">False</property>
+            <property name="monospace">True</property>
           </object>
           <packing>
             <property name="x">15</property>
